@@ -1,22 +1,16 @@
-# Compiled class file
-*.class
+/.idea/
 
-# Log file
-*.log
+/target
 
-# BlueJ files
-*.ctxt
+/logs
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+/src/main/test/
 
-# Package Files #
-*.jar
-*.war
-*.ear
-*.zip
-*.tar.gz
-*.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+/mybatisdemo.iml
+
+/src/main/resources/log4j.properties
+
+/src/main/webapp/js/jquery-3.2.1.js
+
+
