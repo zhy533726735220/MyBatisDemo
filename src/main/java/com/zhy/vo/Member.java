@@ -7,7 +7,7 @@ public class Member implements Serializable {
     private String mid;
     private String name;
     private Integer age;
-    private Double salary;
+    private String phone;
     private Date birthday;
     private String note;
 
@@ -35,12 +35,12 @@ public class Member implements Serializable {
         this.age = age;
     }
 
-    public Double getSalary() {
-        return salary;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setSalary(Double salary) {
-        this.salary = salary;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public Date getBirthday() {

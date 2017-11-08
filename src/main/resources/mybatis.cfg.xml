@@ -18,7 +18,7 @@
 	<!--所有的映射文件的配置信息都需要在此处进行定义-->
 	<!--映射文件信息-->
 	<mappers>
-		<mapper resource="zhy.vo.mapping.Member.xml"/>
+		<mapper resource="zhy/vo/mapping/Member.xml"/>
 	</mappers>
 
 </configuration>
