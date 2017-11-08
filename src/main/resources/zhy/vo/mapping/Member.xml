@@ -9,6 +9,6 @@
 <mapper namespace="zhy.vo.mapping.MemberNS">
 	<!-- 定义要进行数据追加操作的SQL语句，每一个SQL都需要有一个自己独立的ID，这个ID为程序引用 -->
 	<insert id="doCreate" parameterType="com.zhy.vo.Member">
-		INSERT INTO member(mid, name, age, phone, birthday, note) VALUES (#{mid},#{name},#{age},#{phonegit },#{birthday},#{note});
+		INSERT INTO member(mid, name, age, phone, birthday, note) VALUES (#{mid},#{name},#{age},#{phone },#{birthday},#{note});
 	</insert>
 </mapper>

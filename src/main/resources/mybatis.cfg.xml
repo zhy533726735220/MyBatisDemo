@@ -3,6 +3,13 @@
     PUBLIC "-//mybatis.org//DTD Config 3.0//EN"   
     "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
+	<!--为所有的vo类定义别名，这样就可以方便不同的配置文件中针对于Vo的访问-->
+	<typeAliases>
+		<!--以后使用别名News，替代了"com.zhy.vo.Member"-->
+		<typeAlias type="com.zhy.vo.Member" alias="Member"/>
+		<typeAlias type="com.zhy.vo.News" alias="News"/>
+	</typeAliases>
 	<environments default="development">		<!-- 配置数据源的相关信息 -->
 		<environment id="development">
 			<transactionManager type="jdbc" />	<!-- 使用JDBC方式管理 -->
@@ -19,6 +26,7 @@
 	<!--映射文件信息-->
 	<mappers>
 		<mapper resource="zhy/vo/mapping/Member.xml"/>
+		<mapper resource="zhy/vo/mapping/News.xml"/>
 	</mappers>
 
 </configuration>
