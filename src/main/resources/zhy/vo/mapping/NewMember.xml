@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--在每一个配置文件之中实际上都需要有一个独立的命名空间(名字，日后引用就需要此名称)-->
+<!--考虑到后续要进行相关的日志的配置操作，所以对于这个资源文件都建议设置一个包名称-->
+<!--命名空间(Name Space)，所以习惯"包名称+VO名称+NS"-->
+<!--<mapper namespace="vo.mapping.MemberNS">-->
+<mapper namespace="zhy.vo.mapping.NewsMemberNS">
+	<!--在本文件之中，如果要想描述出student、worker、member的对应关系就必须设置映射-->
+	<resultMap id="NewMemberResultMap" type="Member">
+		<!--描述的是公共的属性的定义操作，包括了id以及两个基本的属性-->
+		<id property="name" column="name"/>
+		<id property="age" column="age"/>
+		<!--定义识别器的操作，而后在这里面需要定义出识别器的字段-->
+		<discriminator javaType="java.lang.String" column="flag">
+			<!--描述的是识别器的内容的取值-->
+			<case value="s" resultType="Student">
+				<result property="score" column="score"/>
+				<result property="school" column="school"/>
+			</case>
+			<case value="w" resultType="worker">
+				<result property="salary" column="salary"/>
+				<result property="company" column="company"/>
+			</case>
+		</discriminator>
+	</resultMap>
+
+	<insert id="doCreateStudent" parameterType="Student">
+		INSERT INTO newmember(mid,name,age,school,score,flag) VALUES (#{mid}, #{name}, #{age}, #{school}, #{score}, 's');
+	</insert>
+
+	<insert id="doCreateWorker" parameterType="Worker">
+		INSERT INTO newmember(mid,name,age,company,salary,flag) VALUES (#{mid}, #{name}, #{age}, #{company}, #{salary}, 'w')
+	</insert>
+</mapper>
