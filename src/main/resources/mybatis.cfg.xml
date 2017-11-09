@@ -4,6 +4,12 @@
     "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
+	<!--进行Mybatis的相应的环境的属性定义-->
+	<!--在本项目之中开启二级缓存-->
+	<settings>
+		<setting name="cacheEnabled" value="true"/>
+	</settings>
+
 	<!--为所有的vo类定义别名，这样就可以方便不同的配置文件中针对于Vo的访问-->
 	<typeAliases>
 		<!--以后使用别名News，替代了"com.zhy.vo.Member"-->

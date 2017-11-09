@@ -8,6 +8,9 @@
 <!--<mapper namespace="vo.mapping.MemberNS">-->
 <mapper namespace="zhy.vo.mapping.NewsNS">
 
+	<!--在News中开启了二级缓存-->
+	<cache eviction="LRU" flushInterval="10000" readOnly="true" size="1024"/>
+
 	<resultMap id="NewsMap" type="News">
 		<id column="nid" property="nid"></id>
 		<result column="title" property="title"/>
@@ -35,7 +38,7 @@
 		SELECT nid, title, pub_date FROM news
 	</select>
 
-	<select id="findAllSplit" parameterType="java.util.Map" resultMap="NewsMap">
+	<select id="findAllSplit" parameterType="java.util.Map" resultMap="NewsMap" useCache="false">
 		SELECT nid, title, pub_date FROM news WHERE ${column} LIKE #{keyWord} LIMIT #{start}, #{lineSize}
 	</select>
 
