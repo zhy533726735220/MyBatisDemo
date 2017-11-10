@@ -20,6 +20,8 @@
 		<typeAlias type="com.zhy.vo.Worker" alias="worker"/>
 		<typeAlias type="com.zhy.vo.MemberLogin" alias="MemberLogin"/>
 		<typeAlias type="com.zhy.vo.MemberDetails" alias="MemberDetails"/>
+		<typeAlias type="com.zhy.vo.SubType" alias="SubType"/>
+		<typeAlias type="com.zhy.vo.Type" alias="Type"/>
 	</typeAliases>
 	<environments default="development">		<!-- 配置数据源的相关信息 -->
 		<environment id="development">
@@ -41,6 +43,8 @@
 		<mapper resource="zhy/vo/mapping/News.xml"/>
 		<mapper resource="zhy/vo/mapping/MemberLogin.xml"/>
 		<mapper resource="zhy/vo/mapping/MemberDetails.xml"/>
+		<mapper resource="zhy/vo/mapping/SubType.xml"/>
+		<mapper resource="zhy/vo/mapping/Type.xml"/>
 	</mappers>
 
 </configuration>
