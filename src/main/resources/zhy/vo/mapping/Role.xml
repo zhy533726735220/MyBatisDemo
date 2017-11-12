@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--在每一个配置文件之中实际上都需要有一个独立的命名空间(名字，日后引用就需要此名称)-->
+<!--考虑到后续要进行相关的日志的配置操作，所以对于这个资源文件都建议设置一个包名称-->
+<!--命名空间(Name Space)，所以习惯"包名称+VO名称+NS"-->
+<!--<mapper namespace="vo.mapping.MemberNS">-->
+<mapper namespace="zhy.vo.mapping.RoleNS">
+
+    <resultMap id="RoleMap" type="Role">
+        <id column="rid" property="rid"/>
+        <id column="title" property="title"/>
+        <collection property="allGroups" column="rid" javaType="java.util.List" ofType="Groups" select="zhy.vo.mapping.GroupsNS.findAllByRole"/>
+    </resultMap>
+
+    <!--在保存完role表数据之后，就需要保存role_groups关系表，需要知道增长后的id-->
+    <insert id="doCreate" parameterType="Role" useGeneratedKeys="true" keyProperty="rid">
+        INSERT INTO role(title) VALUES (#{title});
+    </insert>
+
+    <!--向关系表中保存角色与权限组的对应关系-->
+    <insert id="doCreateRoleGroups" parameterType="RoleGroupsLink">
+        INSERT INTO role_groups(rid, gid) VALUES (#{role.rid}, #{groups.gid});
+    </insert>
+
+    <update id="doUpdate" parameterType="Role">
+        UPDATE role SET title=#{title} WHERE rid=#{rid};
+    </update>
+
+    <delete id="doRemoveByRole" parameterType="Integer">
+        DELETE FROM role_groups WHERE rid=#{rid};
+    </delete>
+
+    <select id="findById" parameterType="Integer" resultMap="RoleMap">
+        SELECT rid, title FROM role WHERE rid=#{rid}
+    </select>
+</mapper>
